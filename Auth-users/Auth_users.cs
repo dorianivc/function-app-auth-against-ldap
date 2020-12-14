@@ -53,8 +53,8 @@ namespace Auth_users
                 ldapConnection.Bind(nc);
                 Console.WriteLine("LdapConnection authentication success");
                 ldapConnection.Dispose();
-                string Message = "User is Auth in this organization unit";
-                return new OkObjectResult(Message);
+                authenticated = true;
+                
             }
             catch (DirectoryServicesCOMException cex)
             {
@@ -66,15 +66,18 @@ namespace Auth_users
                 log.LogInformation(ex.ToString());
             }
 
-            if( authenticated == true){
-                string Message = "User is Auth in this organization unit";
+
+
+            if( authenticated != true){
+                string Message = "USER NOT AUTHENTICATED";
                 return new OkObjectResult(Message);
             }
             else
             {
-                string Message = "USER NOT AUTHENTICATED";
+                string Message = "User is Auth in this organization unit";
                 return new OkObjectResult(Message);
             }
+            
         
             
         }
