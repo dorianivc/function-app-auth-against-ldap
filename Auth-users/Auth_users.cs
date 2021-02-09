@@ -49,7 +49,7 @@ namespace Auth_users
                 ldapConnection.AuthType = AuthType.Basic;
                 ldapConnection.SessionOptions.ProtocolVersion = 3;
                 NetworkCredential nc = new NetworkCredential("uid="+username+",ou=people,dc=eastus,dc=cloudapp,dc=azure,dc=com",
-                    password); //password
+                    password); 
                 ldapConnection.Bind(nc);
                 Console.WriteLine("LdapConnection authentication success");
                 ldapConnection.Dispose();
